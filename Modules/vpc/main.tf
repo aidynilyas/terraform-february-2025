@@ -15,6 +15,19 @@ resource "aws_subnet" "main1" {
   }
 }
 
-variable vpc_cidr {}
-variable subnet1_cidr {}
-variable environment {}
+variable vpc_cidr {
+  default = "10.0.0.0/16"
+  type = string
+}
+variable subnet1_cidr {
+  default = "10.0.1.0/24"
+  type = string
+}
+variable environment {
+  default = "dev"
+  type = string
+}
+
+output subnet_id {
+  value = aws_subnet.main1.id
+}
